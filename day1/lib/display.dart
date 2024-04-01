@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -53,13 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      if (currentIndex >= (restues.length - 1)) {
-                        currentIndex = 0;
-                      } else {
-                        currentIndex++;
-                      }
-                    });
+                    selectIndex();
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
@@ -77,5 +73,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  void selectIndex() {
+    final random = Random();
+    final index = random.nextInt(restues.length);
+    setState(() {
+      currentIndex = index;
+    });
   }
 }
