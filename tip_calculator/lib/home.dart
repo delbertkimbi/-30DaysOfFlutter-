@@ -10,7 +10,7 @@ class TipPage extends StatefulWidget {
 class _TipPageState extends State<TipPage> {
   TextEditingController controller = TextEditingController();
   final List<bool> _selection = [true, false, false];
-  late String tip;
+  String? tip;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +19,14 @@ class _TipPageState extends State<TipPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                tip,
-                style: const TextStyle(fontSize: 30),
+            if (tip != null)
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Text(
+                  tip!,
+                  style: const TextStyle(fontSize: 30),
+                ),
               ),
-            ),
             const Text('Total Amount'),
             SizedBox(
               width: 80,
