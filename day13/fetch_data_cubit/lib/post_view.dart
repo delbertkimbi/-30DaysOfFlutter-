@@ -1,6 +1,7 @@
 import 'package:fetch_data_cubit/cubit/post_cubit.dart';
-import 'package:fetch_data_cubit/post.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PostViewPage extends StatefulWidget {
@@ -18,21 +19,29 @@ class _PostViewPageState extends State<PostViewPage> {
         centerTitle: true,
         title: const Text("Posts"),
       ),
-      body: BlocBuilder<PostCubit, List<Post>>(
-        builder: (context, posts) {
-          if(posts.isEmpty){
+      body: BlocBuilder<PostBloc, PostState>(
+        builder: (context, state) {
+          if (state is LoadingPostState) {
             return const Center(child: CircularProgressIndicator());
+          } else if (state is LoadedPostState) {
+            return RefreshIndicator(
+              onRefresh: () async =>
+                  BlocProvider.of<PostBloc>(context).add(PullToRefresh()),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: state.posts.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(state.posts[index].title.toString()),
+                  );
+                },
+              ),
+            );
+          } else if (state is ErrorPostState) {
+            return Center(child: Text("An error occurred ${state.error}"));
+          } else {
+            return Center(child: Container());
           }
-          return ListView.builder(
-            shrinkWrap: true  ,
-            itemCount: posts.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                
-                title: Text(posts[index].title.toString()),
-              );
-            }, 
-          );
         },
       ),
     );
