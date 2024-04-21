@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Learn Flutter'),
+      home: const MyHomePage(title: 'Learn C/C++ Programming'),
     );
   }
 }

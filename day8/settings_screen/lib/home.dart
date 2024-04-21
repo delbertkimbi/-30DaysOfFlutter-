@@ -39,7 +39,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
       body: ListView(
         children: [
@@ -135,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           SwitchListTile(
-            title: const Text("isEmployed"),
+            title: const Text("Is Employed"),
             value: _isEmployed,
             onChanged: (newValue) => setState(
               () {
@@ -147,7 +153,12 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               _saveSettings();
             },
-            child: const Text('Save settings'),
+            child: const Text(
+              'Save settings',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
           ),
         ],
       ),

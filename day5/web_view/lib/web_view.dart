@@ -11,24 +11,12 @@ class WebViewPage extends StatefulWidget {
 class _WebViewPageState extends State<WebViewPage> {
   final controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.disabled)
-    ..loadRequest(Uri.parse('https://flutter.dev/'));
+    ..loadRequest(Uri.parse('https://cforeveryone-1c553-79a37.web.app'));
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: WebViewWidget(controller: controller),
-        // bottomNavigationBar: Container(
-        //   color: Colors.blue,
-        //   child: Padding(
-        //     padding: const EdgeInsets.only(bottom: 20, right: 20),
-        //     child: ButtonBar(
-        //       children: [
-        //         navigationButton(Icons.arrow_back_ios_new_rounded, () {}),
-        //         navigationButton(Icons.arrow_forward_ios_outlined, () {}),
-        //       ],
-        //     ),
-        //   ),
-        // ),
       ),
     );
   }

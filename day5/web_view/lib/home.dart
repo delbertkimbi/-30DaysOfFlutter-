@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 30,
             ),
             const Text(
-              'Do you have problems understanding flutter and Dart?',
+              'Do you have problems understanding C/C++ programming?',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20,
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: Text(
-                'Let\'s visit the documentation and learn better',
+                'Let\'s visit CforEveryone',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
